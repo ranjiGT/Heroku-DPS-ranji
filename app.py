@@ -4,7 +4,7 @@ import pickle
 
 app = Flask(__name__)
 
-model = pickle.load(open("C:\\Users\\User\\Downloads\\DPS-AI-CHALLENGE-main\\DPS-AI-CHALLENGE-main\\model.pkl", "rb"))
+model = pickle.load(open("model.pkl", "rb"))
 
 
 @app.route("/", methods=['GET'])
@@ -27,7 +27,7 @@ def predict():
 @app.route("/api/predict", methods=["POST"])
 def apiPredict():
     if "year" not in request.get_json() or "month" not in request.get_json():
-        return {"Error": "Year ans Month are required!"}, 400
+        return {"Error": "Year and Month are required!"}, 400
 
     data = request.get_json()
     year = data['year']
